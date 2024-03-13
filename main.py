@@ -18,7 +18,9 @@ keyboard.add(KeyboardButton('О проекте'))
 def send_recipe(message):
     r = requests.get(url = URL_RECEPT_API)
     text = (r.json()["recipes"][0]["title"])
+    text2 = (r.json()["recipes"][0]["summary"])
     bot.send_message(message.chat.id, text, reply_markup=keyboard)
+    bot.send_message(message.chat.id, text2, reply_markup=keyboard)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
